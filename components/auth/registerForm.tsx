@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { FormSuccess } from '@/components/ui/form-success';
 import { FormError } from '@/components/ui/form-error';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { register } from '@/actions/register';
 
 export const RegisterForm = () => {
@@ -51,7 +51,6 @@ export const RegisterForm = () => {
                   <FormControl>
                     <Input {...field} placeholder="Candra ganteng" disabled={isPending} />
                   </FormControl>
-                  <FormDescription>Masukkan nama Anda.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -65,7 +64,6 @@ export const RegisterForm = () => {
                   <FormControl>
                     <Input {...field} placeholder="Masukan email Anda" type="email" disabled={isPending} />
                   </FormControl>
-                  <FormDescription>Masukkan alamat email yang terdaftar untuk masuk ke akun Anda.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -79,7 +77,6 @@ export const RegisterForm = () => {
                   <FormControl>
                     <Input {...field} placeholder="Masukkan password Anda" type="password" disabled={isPending} />
                   </FormControl>
-                  <FormDescription>Gunakan password yang sesuai dengan akun Anda. Pastikan panjang minimal 8 karakter.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
