@@ -1,21 +1,9 @@
-import { auth, signOut } from '@/auth';
-import { Button } from '@/components/ui/button';
+'use client';
 
-export default async function AdminPage() {
-  const session = await auth();
+import { useCurrentUser } from '@/hooks/use-current-user';
 
-  return (
-    <>
-      {JSON.stringify(session)}
-      <form
-        action={async () => {
-          'use server';
+export default function AdminPage() {
+  const user = useCurrentUser();
 
-          await signOut();
-        }}
-      >
-        <Button type="submit">Keluar</Button>
-      </form>
-    </>
-  );
+  return <>{JSON.stringify(user)}</>;
 }
