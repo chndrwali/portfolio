@@ -3,6 +3,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -31,7 +32,10 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <body className={`${inter.className} antialiased`}>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </SessionProvider>
   );

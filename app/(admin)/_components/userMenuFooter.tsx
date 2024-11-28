@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { logout } from '@/actions/logout';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -7,8 +8,10 @@ import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '
 import { useConfirm } from '@/hooks/use-confirm';
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { ChevronUp, User2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export const UserMenuFooter = () => {
+  const { toast } = useToast();
   const [ConfirmDialog, confirm] = useConfirm('Apakah kamu yakin?', 'Anda akan keluar akun.');
   const user = useCurrentUser();
 
@@ -16,6 +19,10 @@ export const UserMenuFooter = () => {
     const ok = await confirm();
     if (ok) {
       logout();
+      toast({
+        variant: 'success',
+        description: 'Berhasil keluar',
+      });
     }
   };
 
@@ -38,9 +45,11 @@ export const UserMenuFooter = () => {
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="top" className="w-[--radix-popper-anchor-width]">
-              <DropdownMenuItem>
-                <span>Akun</span>
-              </DropdownMenuItem>
+              <Link href="/admin/account">
+                <DropdownMenuItem>
+                  <span>Akun</span>
+                </DropdownMenuItem>
+              </Link>
               <DropdownMenuItem onClick={LogOut}>
                 <span>Keluar</span>
               </DropdownMenuItem>

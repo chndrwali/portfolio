@@ -11,11 +11,13 @@ import { FormSuccess } from '@/components/ui/form-success';
 import { FormError } from '@/components/ui/form-error';
 import { login } from '@/actions/login';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
   const [isPending, startTransition] = useTransition();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -30,8 +32,21 @@ export const LoginForm = () => {
     setSuccess('');
     startTransition(() => {
       login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
+        if (data.error) {
+          setError(data.error);
+          toast({
+            variant: 'destructive',
+            title: 'Ahh! Ada yang salah',
+            description: 'Ada yang salah dari request kamu',
+          });
+        } else if (data.success) {
+          setSuccess(data.success);
+          toast({
+            variant: 'success',
+            title: 'Berhasil!',
+            description: 'Kamu berhasil login.',
+          });
+        }
       });
     });
   };
