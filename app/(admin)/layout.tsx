@@ -1,13 +1,11 @@
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
-import { HeaderAdmin } from './_components/HeaderAdmin';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
-        <HeaderAdmin />
+      <main className="w-full container mx-auto p-4">
         <SidebarTrigger />
         {children}
       </main>

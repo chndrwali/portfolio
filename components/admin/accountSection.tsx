@@ -5,11 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-// import { FormNewPassword } from '@/components/user/form-new-password';
 import { CiEdit } from 'react-icons/ci';
 import { FaUser } from 'react-icons/fa6';
 import { UpdateUserForm } from '../form/updateUserForm';
 import { SafeUser } from '@/types';
+import { FormNewPassword } from '../form/newPasswordForm';
 
 interface UserProps {
   currentUser: SafeUser | null;
@@ -96,7 +96,9 @@ export const AccountsSection = ({ currentUser }: UserProps) => {
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="container mx-auto">
-                <div className="max-w-lg">{/* <FormNewPassword /> */}</div>
+                <div className="max-w-lg">
+                  <FormNewPassword />
+                </div>
               </div>
             </CardContent>
           </Card>
