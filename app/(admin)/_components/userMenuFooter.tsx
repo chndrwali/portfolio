@@ -36,8 +36,8 @@ export const UserMenuFooter = () => {
               <SidebarMenuButton>
                 <Avatar className="w-8 h-8">
                   <AvatarImage src={user?.image || ''} alt={user?.name || 'Undefined'} />
-                  <AvatarFallback>
-                    <User2 />
+                  <AvatarFallback className="bg-sky-500">
+                    <User2 className="text-white" />
                   </AvatarFallback>
                 </Avatar>
                 {user?.name}

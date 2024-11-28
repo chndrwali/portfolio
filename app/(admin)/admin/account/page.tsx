@@ -1,9 +1,12 @@
-'use client';
+import { getCurrentUser } from '@/actions/getCurrentUser';
+import { AccountsSection } from '@/components/admin/accountSection';
 
-import { useCurrentUser } from '@/hooks/use-current-user';
+export default async function AccountPage() {
+  const currentUser = await getCurrentUser();
 
-export default function AccountPage() {
-  const user = useCurrentUser();
-
-  return <>{JSON.stringify(user)}</>;
+  return (
+    <section className="flex w-full container mx-auto p-4">
+      <AccountsSection currentUser={currentUser} />
+    </section>
+  );
 }

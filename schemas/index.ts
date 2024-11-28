@@ -26,3 +26,15 @@ export const registerSchema = z.object({
     message: 'Nama harus diisi',
   }),
 });
+
+export const updateUserSchema = z.object({
+  email: z.string().email({
+    message: 'Email harus diisi dengan format yang valid.',
+  }),
+  image: z.string().min(1, {
+    message: 'Password wajib diisi.',
+  }),
+  name: z.string().min(1, {
+    message: 'Nama harus diisi',
+  }),
+});
